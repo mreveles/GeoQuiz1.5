@@ -25,7 +25,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
-    private TextView mTokenView;
+    //private TextView mTokenView = (TextView) findViewById(R.id.token_view);
     private TextView mCheatButton;
     private TextView mQuestionTextView;
     private Question[] mQuestionBank = new Question[]{
@@ -119,8 +119,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        mTokenView = (TextView) findViewById(R.id.token_view);
-
         updateQuestion();
     }
 
@@ -183,11 +181,19 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton.setEnabled(!mQuestionsAnswered[mCurrentIndex]);
         mTrueButton.setEnabled(!mQuestionsAnswered[mCurrentIndex]);
         if(hints == 3){
-            mTokenView.setText(TokenCount[0]);
-            mCheatButton.setEnabled(false);
-        }else {
-            mTokenView.setText((TokenCount[(4-hints)]));
-        }
+            //mTokenView.setText("0");
+           mCheatButton.setEnabled(false);
+        }/*else {
+            if(hints==2){
+                mTokenView.setText("2");
+            }
+            if(hints == 1){
+                mTokenView.setText("1");
+            }
+            if(hints == 0){
+                mTokenView.setText("0");
+            }
+        }*/
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         checkGrade();
         mQuestionTextView.setText(question);
